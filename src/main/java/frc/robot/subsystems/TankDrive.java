@@ -6,12 +6,16 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class TankDriv extends SubsystemBase {
-  /** Creates a new TankDriv. */
-  public TankDriv() {}
+private CANSparkMax FrontLeftMotor = new CANSparkMax();
 
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
+public class TankDrive extends SubsystemBase {
+  /** Creates a new TankDriv. */
+  public TankDrive() {
+    
   }
+
+  // @Override
+  // public void periodic() {
+  //   // This method will be called once per scheduler run
+  // }
 }
