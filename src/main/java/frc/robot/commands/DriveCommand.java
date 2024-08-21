@@ -4,11 +4,13 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.subsystems.TankDrive;
 
 public class DriveCommand extends Command {
   /** Creates a new DriveCommand. */
-  public DriveCommand() {
+  public DriveCommand(TankDrive tankDrive, Joystick joystick) {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
