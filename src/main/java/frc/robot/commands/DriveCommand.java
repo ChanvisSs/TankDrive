@@ -4,12 +4,27 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants;
+import frc.robot.subsystems.TankDrive;
 
 public class DriveCommand extends Command {
+  
+  private Constants constants = new Constants();
+
+  private TankDrive tankDrive;
+  private Joystick joystick;
+
   /** Creates a new DriveCommand. */
-  public DriveCommand() {
+  public DriveCommand(TankDrive tankDrive, Joystick joystick) {
+
+    this.tankDrive = tankDrive;
+    this.joystick = joystick;
+
     // Use addRequirements() here to declare subsystem dependencies.
+
+    this.addRequirements(tankDrive);
   }
 
   // Called when the command is initially scheduled.
@@ -18,7 +33,11 @@ public class DriveCommand extends Command {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+
+    tankDrive.setArcade(joystick.getRawAxis(constants.driveAxis), joystick.getRawAxis(constants.turnAxis));
+
+  }
 
   // Called once the command ends or is interrupted.
   @Override
