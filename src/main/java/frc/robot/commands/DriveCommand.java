@@ -18,7 +18,6 @@ public class DriveCommand extends Command {
 
   /** Creates a new DriveCommand. */
   public DriveCommand(TankDrive tankDrive, Joystick joystick) {
-
     this.tankDrive = tankDrive;
     this.joystick = joystick;
 
