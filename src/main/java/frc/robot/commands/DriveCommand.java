@@ -17,9 +17,9 @@ public class DriveCommand extends Command {
   private Joystick joystick;
 
   /** Creates a new DriveCommand. */
-  public DriveCommand(TankDrive tankDrive, Joystick joystick) {
+  public DriveCommand(TankDrive tankDrive) {
     this.tankDrive = tankDrive;
-    this.joystick = joystick;
+    // this.joystick = joystick;
 
     // Use addRequirements() here to declare subsystem dependencies.
 
@@ -28,13 +28,17 @@ public class DriveCommand extends Command {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
 
-    tankDrive.setArcade(joystick.getRawAxis(constants.driveAxis), joystick.getRawAxis(constants.turnAxis));
+    // tankDrive.setArcade(joystick.getRawAxis(constants.driveAxis), joystick.getRawAxis(constants.turnAxis));
+    tankDrive.setArcade(0.25, 1);
+    // tankDrive.setTank(1, 1);
+    // tankDrive.update();
 
   }
 

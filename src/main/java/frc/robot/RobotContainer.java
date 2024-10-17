@@ -24,7 +24,7 @@ public class RobotContainer {
   Constants constants = new Constants();
 
   // The robot's subsystems and commands are defined here...
-  private final TankDrive m_tankDrive = new TankDrive();
+  // private final TankDrive m_tankDrive = new TankDrive();
 
 
   private Joystick joystick = new Joystick(constants.joystickPort);
@@ -37,7 +37,7 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
-    constantCommands();
+    // constantCommands();
   }
 
   /**
@@ -58,9 +58,9 @@ public class RobotContainer {
     // // cancelling on release.
     // m_driverController.b().whileTrue(m_TankDrive.exampleMethodCommand());
   }
-  public void constantCommands() {
-    m_tankDrive.setDefaultCommand(new DriveCommand(m_tankDrive, joystick));
-  }
+  // public void constantCommands() {
+  //   m_tankDrive.setDefaultCommand(new DriveCommand(m_tankDrive, joystick));
+  // }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.

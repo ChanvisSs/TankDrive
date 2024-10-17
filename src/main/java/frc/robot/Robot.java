@@ -4,9 +4,12 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.DriveCommand;
+import frc.robot.subsystems.TankDrive;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -18,16 +21,21 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
-
+  private Joystick joystick;
+  private TankDrive tankDrive;
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
    */
+  public Robot() {
+    tankDrive = new TankDrive();
+  }
   @Override
   public void robotInit() {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
+    tankDrive.setDefaultCommand(new DriveCommand(tankDrive));
   }
 
   /**
@@ -66,25 +74,40 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during autonomous. */
   @Override
-  public void autonomousPeriodic() {}
+  public void autonomousPeriodic() {
+  }
 
   @Override
   public void teleopInit() {
+     System.out.println("jfl\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
+    try {
+    tankDrive = new TankDrive();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+  
   }
 
   /** This function is called periodically during operator control. */
   @Override
-  public void teleopPeriodic() {}
+  public void teleopPeriodic() {
+    // System.out.println("afldsflj\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    // This makes sure that the autonomous stops running when
+    // teleop starts running. If you want the autonomous to
+    tankDrive.setTank(1, 1);
+  }
 
   @Override
-  public void testInit() {
+  public void testInit(
+   
+  ) {
     // Cancels all running commands at the start of test mode.
     CommandScheduler.getInstance().cancelAll();
   }
